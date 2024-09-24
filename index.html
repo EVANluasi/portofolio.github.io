@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff4a57;
+        }
+
+        .intro {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: url('https://images.unsplash.com/photo-1496181133206-80ce9b88a853') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        .intro h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .intro p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        .intro button {
+            padding: 10px 20px;
+            background-color: #ff4a57;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            animation: fadeInUp 2s ease-in-out;
+            border-radius: 5px;
+        }
+
+        .intro button:hover {
+            background-color: #fff;
+            color: #ff4a57;
+        }
+
+        @keyframes fadeInDown {
+            0% { transform: translateY(-20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        #about {
+            padding: 50px;
+            text-align: center;
+            background: #fff;
+            position: relative;
+        }
+
+        #about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        #about h2:after {
+            content: '';
+            width: 50px;
+            height: 5px;
+            background-color: #ff4a57;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #about p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #skills {
+            background: linear-gradient(135deg, #f4f4f9 50%, #fff 50%);
+            padding: 50px 0;
+        }
+
+        #skills h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        #skills h2:after {
+            content: '';
+            width: 50px;
+            height: 5px;
+            background-color: #ff4a57;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .skills-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .skill-card {
+            background-color: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .skill-card img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-card:hover::after {
+            content: 'Expert in this skill';
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        #projects {
+            padding: 50px;
+            background: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        #projects h2 {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        #projects h2:after {
+            content: '';
+            width: 50px;
+            height: 5px;
+            background-color: #ff4a57;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .projects-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .project-card {
+            background-color: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        #awards {
+            background: linear-gradient(135deg, #fff 50%, #f4f4f9 50%);
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        #awards h2 {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        #awards h2:after {
+            content: '';
+            width: 50px;
+            height: 5px;
+            background-color: #ff4a57;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .awards-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .award-card {
+            background-color: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 200px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .award-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+
+        .award-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        #contact {
+            padding: 50px;
+            background: linear-gradient(135deg, #f4f4f9 50%, #fff 50%);
+            text-align: center;
+            position: relative;
+        }
+
+        #contact h2 {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        #contact h2:after {
+            content: '';
+            width: 50px;
+            height: 5px;
+            background-color: #ff4a57;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #contact form {
+            display: inline-block;
+            width: 100%;
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact form input, #contact form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #contact form button {
+            padding: 10px 20px;
+            background-color: #ff4a57;
+            color: #fff;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+        }
+
+        #contact form button:hover {
+            background-color: #333;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .intro h1 {
+                font-size: 2.5rem;
+            }
+
+            .intro p {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            .skills-grid, .projects-grid, .awards-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="intro">
+        <h1>Evan</h1>
+        <p>Web Developer | Designer | Programmer | Back-end Developer | Full Stack</p>
+        <button onclick="document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' })">Explore My Work</button>
+    </section>
+
+    <section id="about" class="reveal">
+        <h2>About Me</h2>
+        <p>Hello, I'm a passionate web developer with expertise in creating dynamic and responsive websites. I specialize in modern web technologies and always strive to learn new skills to improve my work.</p>
+    </section>
+
+    <section id="skills" class="reveal">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML">
+                <h3>HTML</h3>
+            </div>
+            <div class="skill-card">
+                <img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS">
+                <h3>CSS</h3>
+            </div>
+            <div class="skill-card">
+                <img src="https://img.icons8.com/color/48/000000/javascript.png" alt="JavaScript">
+                <h3>JavaScript</h3>
+            </div>
+            <div class="skill-card">
+                <img src="https://img.icons8.com/color/48/000000/react-native.png" alt="React">
+                <h3>React</h3>
+            </div>
+            <div class="skill-card">
+                <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python">
+                <h3>Python</h3>
+            </div>
+            <div class="skill-card">
+                <img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo.png" alt="Java">
+                <h3>Java</h3>
+            </div>
+            <div class="skill-card">
+                <img src="https://www.djangoproject.com/m/img/logos/django-logo-negative.png" alt="Django" style="width:50px; height:50px;">
+                <h3>Django</h3>
+            </div>
+            <div class="skill-card">
+                <img src="https://img.icons8.com/color/48/000000/spring-logo.png" alt="Spring Boot">
+                <h3>Spring Boot</h3>
+            </div>
+            <div class="skill-card">
+                <img src="https://img.icons8.com/color/48/000000/nodejs.png" alt="Node.js">
+                <h3>Node.js</h3>
+            </div>
+            <div class="skill-card">
+                <img src="https://img.icons8.com/color/48/000000/bootstrap.png" alt="Bootstrap">
+                <h3>Bootstrap</h3>
+            </div>
+            <div class="skill-card">
+                <img src="https://img.icons8.com/color/48/000000/tailwind_css.png" alt="Tailwind CSS">
+                <h3>Tailwind CSS</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="reveal">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Project 1">
+                <h3>Portfolio Website</h3>
+                <p>This is a personal portfolio website designed to showcase my skills, projects, and experience in web development.</p>
+            </div>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1506773090264-ac0b07293a64" alt="Project 2">
+                <h3>eCommerce Platform</h3>
+                <p>An eCommerce web application that allows users to browse products, add to cart, and complete purchases with ease.</p>
+            </div>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Project 3">
+                <h3>Blog Website</h3>
+                <p>A blog platform built with modern web technologies, featuring an intuitive user interface and SEO optimization.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards" class="reveal">
+        <h2>Awards & Achievements</h2>
+        <div class="awards-grid">
+            <div class="award-card">
+                <img src="https://img.icons8.com/color/96/000000/trophy.png" alt="Award 1">
+                <h3>Best Developer</h3>
+                <p>Received for outstanding performance in web development.</p>
+            </div>
+            <div class="award-card">
+                <img src="https://img.icons8.com/color/96/000000/trophy.png" alt="Award 2">
+                <h3>Top Innovator</h3>
+                <p>Recognized for innovative solutions and creative approach.</p>
+            </div>
+            <div class="award-card">
+                <img src="https://img.icons8.com/color/96/000000/trophy.png" alt="Award 3">
+                <h3>Excellence in Design</h3>
+                <p>Awarded for exceptional design skills and user interface creativity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="reveal">
+        <h2>Contact Me</h2>
+        <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Evan. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const reveals = document.querySelectorAll('.reveal');
+
+            function reveal() {
+                const windowHeight = window.innerHeight;
+                reveals.forEach(reveal => {
+                    const revealTop = reveal.getBoundingClientRect().top;
+                    if (revealTop < windowHeight - 100) {
+                        reveal.classList.add('visible');
+                    } else {
+                        reveal.classList.remove('visible');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', reveal);
+            reveal(); 
+        });
+    </script>
+
+</body>
+</html>
